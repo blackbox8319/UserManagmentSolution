@@ -4,7 +4,9 @@
     ViewData["Title"] = "Admin Dashboard";
 }
 
-<h2 class="mb-4">User Management</h2>
+<h2 class="mb-4">Welcome, @User.Identity.Name!</h2>
+
+<a asp-controller="Admin" asp-action="CreateUser" class="btn btn-success mb-2">Create User</a>
 
 <table class="table table-striped table-bordered">
     <thead class="table-dark">
