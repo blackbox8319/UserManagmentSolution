@@ -1,0 +1,29 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<UserManagmentSolution.Models.ApplicationUser> SignInManager
+@inject UserManager<UserManagmentSolution.Models.ApplicationUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">@User.Identity.Name</a>
+        <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" asp-controller="Home" asp-action="UserDashboard">Dashboard</a></li>
+            @if (User.IsInRole("Admin"))
+            {
+                <li><a class="dropdown-item" asp-controller="Home" asp-action="AdminDashboard">Admin Dashboard</a></li>
+                <li><a class="dropdown-item" asp-controller="Admin" asp-action="Index">Manage Users</a></li>
+            }
+            <li>
+                <form asp-controller="Account" asp-action="Logout" method="post" class="px-3">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-link">Logout</button>
+                </form>
+            </li>
+        </ul>
+    </li>
+}
+else
+{
+    <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Login">Login</a></li>
+    <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Register">Register</a></li>
+}

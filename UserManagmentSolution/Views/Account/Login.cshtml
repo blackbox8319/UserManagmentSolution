@@ -1,0 +1,59 @@
+﻿@model UserManagmentSolution.Models.LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container-fluid min-vh-100 d-flex justify-content-center align-items-center">
+    <div class="row w-100 justify-content-center align-items-center">
+
+        <!-- Left illustration -->
+        <div class="col-md-6 d-none d-md-flex justify-content-center align-items-center">
+            <img src="https://png.pngtree.com/png-clipart/20230504/original/pngtree-free-vector-login-concept-illustration-png-image_9140539.png"
+                 class="img-fluid"
+                 style="max-height: 80%;"
+                 alt="Login Illustration" />
+        </div>
+
+        <!-- Right login form -->
+        <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <div class="card shadow-lg p-4" style="width: 100%; max-width: 400px;">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4>Login</h4>
+                </div>
+                <div class="card-body">
+
+                    <!-- Show alert ONLY if errors exist -->
+                    @if (!ViewData.ModelState.IsValid && ViewData.ModelState.ErrorCount > 0)
+                    {
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            @foreach (var modelState in ViewData.ModelState.Values)
+                            {
+                                foreach (var error in modelState.Errors)
+                                {
+                                    <div>@error.ErrorMessage</div>
+                                }
+                            }
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+
+                    <form method="post">
+                        <div class="mb-3">
+                            <label asp-for="Username" class="form-label"></label>
+                            <input asp-for="Username" class="form-control" />
+                            <span asp-validation-for="Username" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label"></label>
+                            <input asp-for="Password" type="password" class="form-control" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

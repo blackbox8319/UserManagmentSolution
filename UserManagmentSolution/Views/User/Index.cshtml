@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "User Dashboard";
+}
+
+<div class="text-center mt-5">
+    <h2 class="mb-4">Welcome, @User.Identity.Name!</h2>
+
+    <!-- Animated PNG -->
+    <div class="mb-4">
+        <img src="https://img.freepik.com/premium-vector/intelligent-machines_951778-59395.jpg"
+             alt="Animated PNG"
+             class="img-fluid rounded shadow-lg"
+             style="max-width: 400px;">
+    </div>
+
+    <!-- Motivational Quotes -->
+    <div class="card shadow-lg mx-auto" style="max-width: 600px;">
+        <div class="card-body">
+            <h5 class="card-title">Quote of the Day</h5>
+            <p class="card-text fst-italic">
+                "@(new string[] {
+                "Believe in yourself!",
+                "Stay positive, work hard, make it happen.",
+                "Every day is a second chance.",
+                "Success is not final, failure is not fatal."
+                    }[new Random().Next(4)])"
+            </p>
+        </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="mt-4">
+        <a href="/Ac
