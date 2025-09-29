@@ -71,7 +71,8 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li class="nav-item">
-                            <span class="nav-link fw-semibold">Hello, @User.Identity.Name</span>
+                            @inject UserManager<UserManagmentSolution.Models.ApplicationUser> UserManager
+                            <span class="nav-link fw-semibold">Hello, @await User.GetFirstNameAsync(UserManager)</span>
                         </li>
                         <li class="nav-item">
                             <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">

@@ -37,7 +37,8 @@
                         </div>
                     }
 
-                    <form method="post">
+                    <!-- Normal Login Form -->
+                    <form method="post" asp-action="Login">
                         <div class="mb-3">
                             <label asp-for="Username" class="form-label"></label>
                             <input asp-for="Username" class="form-control" />
@@ -50,6 +51,26 @@
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Login</button>
                     </form>
+
+                    <!-- Divider -->
+                    <div class="text-center my-3">
+                        <span>OR</span>
+                    </div>
+
+                    <!-- Google Login -->
+                    <form method="post" asp-action="ExternalLogin" asp-controller="Account">
+                        <input type="hidden" name="provider" value="Google" />
+                        <button type="submit" class="btn btn-light w-100 d-flex align-items-center justify-content-center border">
+                            <!-- Colorful Google icon from Flaticon -->
+                            <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png"
+                                 alt="Google Logo" width="20" height="20" class="me-2" />
+                            Sign in with Google
+                        </button>
+                    </form>
+
+
+
+
 
                 </div>
             </div>
